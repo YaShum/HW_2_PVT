@@ -34,8 +34,20 @@ Array.prototype.shuffle = function () {
 var arrColoda = arrResult.shuffle();
 
 //divide into two parts
-var handPetja = arrColoda.slice(0, 18);
-var handVasja = arrColoda.slice(18, 36);
+/*var handPetja = arrColoda.slice(0, 18);
+var handVasja = arrColoda.slice(18, 36);*/
+
+function partArray(arr, part) {
+    var l, m, n = [];
+    for (l = 0, m = arr.length; l < m; l += part) {
+        n.push(arr.slice(l, l + part));
+    }
+    return n;
+}
+
+var allHand = partArray(arrColoda, 18);
+var handPetja = allHand[0];
+var handVasja = allHand[1];
 
 //casual trump
 console.log(arrSuit);
